@@ -31,7 +31,7 @@ const PlayerReducer = (state = {
   } else {
     return state;
   }
-};
+}; 
 
 
 export default PlayerReducer;
