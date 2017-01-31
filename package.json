@@ -5,11 +5,16 @@
   "homepage": "https://mwnachman.github.io/tic-tac-toe",
   "devDependencies": {
     "gh-pages": "^0.12.0",
-    "react-scripts": "0.8.5"
+    "react-scripts": "0.8.5",
+    "react-dev-utils": "^0.3.0",
+    "redux-devtools-extension": "^1.0.0"
   },
   "dependencies": {
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4"
   },
   "scripts": {
     "start": "react-scripts start",

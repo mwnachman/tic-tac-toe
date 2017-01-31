@@ -1,0 +1,43 @@
+.board {
+  height: 280px;
+  width: 280px;
+  background-color: red;
+  margin: 0 auto;
+}
+
+img {
+  margin-top: 5px;
+}
+
+.square-0, .square-1, .square-3, .square-4 {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  background-color: white;
+  float: left;
+}
+
+.square-2, .square-5 {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  background-color: white;
+  float: left;
+}
+
+.square-6, .square-7 {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  background-color: white;
+  float: left;
+}
+
+.square-8 {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  float: left;
+}
+
