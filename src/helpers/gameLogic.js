@@ -3,8 +3,6 @@ export const playerMove = (player, square, board, turn) => {
   if (board[square] === null || board[square] === player) {
     return player;
   }
-
-
 }
 
 export const computerMove = (player, board) => {

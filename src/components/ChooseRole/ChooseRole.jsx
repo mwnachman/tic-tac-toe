@@ -21,9 +21,9 @@ class ChooseRole extends Component {
 
   render () {
     return (
-      <div>
+      <div className="choice">
         {this.props.player.optionVisible && 
-          <div className="choice">
+          <div>
             <p className="choice-text">Would you like to be "X" or "O"?</p>
             <button className="choice-button" 
             onClick={this.props.selectX}>X</button>

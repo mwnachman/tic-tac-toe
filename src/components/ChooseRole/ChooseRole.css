@@ -1,6 +1,19 @@
+.choice {
+  height: 70px;
+  font: 15px "Arial Black";
+}
+
 .choice-button {
   height: 30px;
   width: 50px;
   margin-left: 10px;
   margin-right: 10px;
+  border-radius: 3px;
+  font: 15px Arial;
 }
+
+.chosen {
+  padding-top: 40px;
+  margin-bottom: 20px;
+}
+

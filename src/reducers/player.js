@@ -3,6 +3,7 @@ const PlayerReducer = (state = {
   xOrY: null,
   optionVisible: true,
   playersTurn: false,
+  playerWon: null,
   playerScore: 0,
   computerScore: 0
 }
@@ -26,7 +27,8 @@ const PlayerReducer = (state = {
     return Object.assign({}, state, {
       xOrY: null,
       optionVisible: true,
-      playersTurn: false
+      playersTurn: false,
+      playerWon: null
     })
   } else {
     return state;

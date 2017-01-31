@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectSquareAction } from '../../actions/game';
-
-
 import './Board.css';
 
 const xImage = require('../../assets/X.png');
@@ -41,6 +39,12 @@ class Board extends Component {
             }
            </span>)
         )}
+        {this.props.player.playerWon === true &&
+          <div className='win-or-lose'>YOU WIN!</div>  
+        }
+        {this.props.player.playerWon === false &&
+          <div className='win-or-lose'>YOU LOST!</div>
+        }
       </div>
     )
   }

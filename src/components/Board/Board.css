@@ -9,6 +9,16 @@ img {
   margin-top: 5px;
 }
 
+.win-or-lose {  
+  height: 280px;
+  width: 280px;
+  background-color: transparent;
+  position: absolute;
+  text-align: center;
+  font: 60px Impact;
+  margin-top: 100px;
+}
+
 .square-0, .square-1, .square-3, .square-4 {
   width: 80px;
   height: 80px;
