@@ -33,50 +33,144 @@ const checkRightToLeftDiagonal = (player, board) => {
 export const checkForWin = (player, square, board) => {
   console.log('in check for win');
   board[square] = player;
+  let allSquaresFull = true;
+  for (let i = 0; i < 9; i++) {
+    if (board[i] === null) {
+      allSquaresFull = false;
+    }
+  }
+  console.log('all squares full', allSquaresFull);
   if (square === 0) {
     console.log('in square 0');
-    return (checkTopRow(player, board) 
-            || checkLeftToRightDiagonal(player, board) 
-            || checkFirstColumn(player, board));
+    if (allSquaresFull) {
+      if (checkTopRow(player, board) 
+        || checkLeftToRightDiagonal(player, board) 
+        || checkFirstColumn(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkTopRow(player, board) 
+        || checkLeftToRightDiagonal(player, board) 
+        || checkFirstColumn(player, board));
+    }
   } else if (square === 1) {
     console.log('in square 1');
-    return (checkTopRow(player, board) 
-            || checkSecondColumn(player, board));
+    if (allSquaresFull) {
+      if (checkTopRow(player, board) 
+        || checkSecondColumn(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkTopRow(player, board) 
+        || checkSecondColumn(player, board));
+    }
   } else if (square === 2) {
     console.log('in square 2');
-    return (checkTopRow(player, board) 
-            || checkThirdColumn(player, board)
-            || checkRightToLeftDiagonal(player, board));
+    if (allSquaresFull) {
+      if (checkTopRow(player, board) 
+        || checkThirdColumn(player, board)
+        || checkRightToLeftDiagonal(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkTopRow(player, board) 
+        || checkThirdColumn(player, board)
+        || checkRightToLeftDiagonal(player, board));
+    }
   } else if (square === 3) {
     console.log('in square 3');
-    return (checkFirstColumn(player, board) 
-            || checkMiddleRow(player, board));
+    if (allSquaresFull) {
+      if (checkFirstColumn(player, board) 
+        || checkMiddleRow(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkFirstColumn(player, board) 
+        || checkMiddleRow(player, board)); 
+    }
   } else if (square === 4) {
     console.log('in square 4');
-    return (checkLeftToRightDiagonal(player, board) 
-            || checkRightToLeftDiagonal(player, board)
-            || checkMiddleRow(player, board) 
-            || checkSecondColumn(player, board));
+    if (allSquaresFull) {
+      if (checkLeftToRightDiagonal(player, board) 
+        || checkRightToLeftDiagonal(player, board)
+        || checkMiddleRow(player, board) 
+        || checkSecondColumn(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkLeftToRightDiagonal(player, board) 
+        || checkRightToLeftDiagonal(player, board)
+        || checkMiddleRow(player, board) 
+        || checkSecondColumn(player, board));
+    }
   } else if (square === 5) {
     console.log('in square 5');
-    return (checkThirdColumn(player, board) 
-            || checkMiddleRow(player, board));
+    if (allSquaresFull) {
+      if (checkThirdColumn(player, board) 
+        || checkMiddleRow(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkThirdColumn(player, board) 
+        || checkMiddleRow(player, board));
+    }
   } else if (square === 6) {
     console.log('in square 6');
-    return (checkFirstColumn(player, board)
-            || checkBottomRow(player, board)
-            || checkRightToLeftDiagonal(player, board));
+    if (allSquaresFull) {
+      if (checkFirstColumn(player, board)
+        || checkBottomRow(player, board)
+        || checkRightToLeftDiagonal(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkFirstColumn(player, board)
+        || checkBottomRow(player, board)
+        || checkRightToLeftDiagonal(player, board));
+    }
   } else if (square === 7) {
     console.log('in square 7');
-    return (checkSecondColumn(player, board) 
-            || checkBottomRow(player, board));
+    if (allSquaresFull) {
+      if (checkSecondColumn(player, board) 
+        || checkBottomRow(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkSecondColumn(player, board) 
+        || checkBottomRow(player, board)); 
+    }
   } else if (square === 8) {
     console.log('in square 8');
-    return (checkLeftToRightDiagonal(player, board)
-            || checkThirdColumn(player, board)
-            || checkBottomRow(player, board))
+    if (allSquaresFull) {
+      if (checkLeftToRightDiagonal(player, board)
+        || checkThirdColumn(player, board)
+        || checkBottomRow(player, board)) {
+        return true;
+      } else {
+        return 'draw';
+      }
+    } else {
+      return (checkLeftToRightDiagonal(player, board)
+        || checkThirdColumn(player, board)
+        || checkBottomRow(player, board));
+    }
   } else {
-    return "draw";
+    return 'draw';
   }
 };
 
