@@ -1,3 +1,5 @@
+import { checkForWin } from '../helpers/gameLogic';
+
 export const selectX = () => {
   return {
     type: 'SELECT_X',
@@ -12,9 +14,15 @@ export const selectO = () => {
   };
 };
 
-export const youWonAction = () => {
-  console.log('in you won action');
+export const youWonAction = (player, square, board) => {
+  // console.log('in you won action');
+  let win = checkForWin(player, square, board);
+  // console.log('win', win);
   return {
-    type: 'WIN_GAME'
-  };
+      type: 'WIN_GAME',
+      payload: {
+        player: player, 
+        win: win
+    }
+  }
 };

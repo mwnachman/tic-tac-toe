@@ -1,20 +1,3 @@
-export const playerMove = (player, square, board, turn) => {
-  console.log('in player move');
-
-  if (board[square] === null || board[square] === player) {
-    return player;
-  }
-};
-
-export const computerMove = (player, board) => {
-  console.log('in computer move');
-  // Logic of Game
-
-  // var square; 
-  return 5;
-};
-
-
 const checkTopRow = (player, board) => {
   return (board[0] === player && board[1] === player && board[2] === player);
 };
@@ -92,5 +75,134 @@ export const checkForWin = (player, square, board) => {
     return (checkLeftToRightDiagonal(player, board)
             || checkThirdColumn(player, board)
             || checkBottomRow(player, board))
+  } else {
+    return "draw";
   }
 };
+
+export const twoInARow = function(player, board) {
+  // let humanPlayer = player === "X" ? "O" : "X";
+  for (var i = 0; i < 7; i += 3) {
+    // horizontal
+    if (board[i] === player) {
+      if (board[i + 1] === player) {
+        if (board[i + 2] === null) {
+          return i + 2;
+        };
+      } else if (board[i + 2] === player) {
+        if (board[i + 1] === null) {
+          return i + 1;
+        }
+      }
+    } else if (board[i + 1] === player) {
+      if (board[i + 2] === player) {
+        if (board[i] === null) {
+          return i;
+        }
+      } 
+    }
+  }
+  for (var j = 0; j < 3; j++) {
+    // vertical
+    if (board[j] === player) {
+      if (board[j + 3] === player) {
+        if (board[j + 6] === null) {
+          return j + 6;
+        }
+      } else if (board[j + 6] === player) {
+        if (board[j + 3] === null) {
+          return j + 3;
+        }
+      }
+    } else if (board[j + 3] === player) {
+      if (board[j + 6] === player) {
+        if (board[j] === null) {
+          return j;
+        }
+      }
+    }
+  }
+    // diagonal
+  if (board[0] === player && board[4] === player) {
+    if (board[8] === null) {
+      return 8;
+    }
+  } else if (board[4] === player && board[8] === player) {
+    if (board[0] === null) {
+      return 0;
+    }
+  } else if (board[0] === player && board[8] === player) {
+    if (board[4] === null) {
+      return 4;
+    }
+  } else if (board[2] === player && board[4] === player) {
+    if (board[6] === null) {
+      return 6;
+    }
+  } else if (board[4] === player && board[6] === player) {
+    if (board[2] === null) {
+      return 2;
+    }
+  } else if (board[2] === player && board[6] === player) {
+    if (board[4] === null) {
+      return 4;
+    }
+  } else if (board[0] === player && board[4] === player) {
+    if (board[8] === null) {
+      return 8;
+    }
+  } else {
+    return -1;
+  }
+}
+
+export const findMove = (player, board) => {
+  console.log('board', board);
+  console.log('in computer move');
+  let humanPlayer = player === "X" ? "O" : "X";
+  if (twoInARow(player, board) > 0 ||  twoInARow(humanPlayer, board) > 0) {
+    return twoInARow(player, board) > -1 ? twoInARow(player, board) : twoInARow(humanPlayer, board);
+  } else if (board[4] === null) {
+    return 4;
+  } else if (board[0] === humanPlayer && board[8] === null) {
+    return 8;
+  } else if (board[8] === humanPlayer && board[0] === null) {
+    return 0;
+  } else if (board[2] === humanPlayer && board[6] === null) {
+    return 6;
+  } else if (board[6] === humanPlayer && board[2] === null) {
+    return 2;
+  } else if (board[0] === null) {
+    return 0;
+  } else if (board[2] === null) {
+    return 2;
+  } else if (board[6] === null) {
+    return 6;
+  } else if (board[8] === null) {
+    return 8;
+  } else if (board[1] === null) {
+    return 1;
+  } else if (board[3] === null) {
+    return 3;
+  } else if (board[5] === null) {
+    return 5;
+  } else if (board[7] === null) {
+    return 7;
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

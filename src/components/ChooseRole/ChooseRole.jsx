@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { computerMoveAction } from '../../actions/game';
 import { selectX, selectO } from '../../actions/player';
 import './ChooseRole.css';
 
@@ -12,12 +13,18 @@ const mapStateToProps = (state) => {
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({ selectX: selectX, 
-                              selectO: selectO
+                              selectO: selectO, 
+                              computerMove: computerMoveAction,
                              }, dispatch);
 };
  
 
 class ChooseRole extends Component {
+
+  computerStartsGame() {
+    this.props.selectO();
+    this.props.computerMove("X", 4);
+  }
 
   render () {
     return (
@@ -28,7 +35,7 @@ class ChooseRole extends Component {
             <button className="choice-button" 
             onClick={this.props.selectX}>X</button>
             <button className="choice-button"
-            onClick={this.props.selectO}>O</button>
+            onClick={this.computerStartsGame.bind(this)}>O</button>
           </div>
         }
         {!this.props.player.optionVisible && 
