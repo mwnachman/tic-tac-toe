@@ -31,7 +31,6 @@ const checkRightToLeftDiagonal = (player, board) => {
 };
 
 export const checkForWin = (player, square, board) => {
-  console.log('in check for win');
   board[square] = player;
   let allSquaresFull = true;
   for (let i = 0; i < 9; i++) {
@@ -39,9 +38,7 @@ export const checkForWin = (player, square, board) => {
       allSquaresFull = false;
     }
   }
-  console.log('all squares full', allSquaresFull);
   if (square === 0) {
-    console.log('in square 0');
     if (allSquaresFull) {
       if (checkTopRow(player, board) 
         || checkLeftToRightDiagonal(player, board) 
@@ -56,7 +53,6 @@ export const checkForWin = (player, square, board) => {
         || checkFirstColumn(player, board));
     }
   } else if (square === 1) {
-    console.log('in square 1');
     if (allSquaresFull) {
       if (checkTopRow(player, board) 
         || checkSecondColumn(player, board)) {
@@ -69,7 +65,6 @@ export const checkForWin = (player, square, board) => {
         || checkSecondColumn(player, board));
     }
   } else if (square === 2) {
-    console.log('in square 2');
     if (allSquaresFull) {
       if (checkTopRow(player, board) 
         || checkThirdColumn(player, board)
@@ -84,7 +79,6 @@ export const checkForWin = (player, square, board) => {
         || checkRightToLeftDiagonal(player, board));
     }
   } else if (square === 3) {
-    console.log('in square 3');
     if (allSquaresFull) {
       if (checkFirstColumn(player, board) 
         || checkMiddleRow(player, board)) {
@@ -97,7 +91,6 @@ export const checkForWin = (player, square, board) => {
         || checkMiddleRow(player, board)); 
     }
   } else if (square === 4) {
-    console.log('in square 4');
     if (allSquaresFull) {
       if (checkLeftToRightDiagonal(player, board) 
         || checkRightToLeftDiagonal(player, board)
@@ -114,7 +107,6 @@ export const checkForWin = (player, square, board) => {
         || checkSecondColumn(player, board));
     }
   } else if (square === 5) {
-    console.log('in square 5');
     if (allSquaresFull) {
       if (checkThirdColumn(player, board) 
         || checkMiddleRow(player, board)) {
@@ -127,7 +119,6 @@ export const checkForWin = (player, square, board) => {
         || checkMiddleRow(player, board));
     }
   } else if (square === 6) {
-    console.log('in square 6');
     if (allSquaresFull) {
       if (checkFirstColumn(player, board)
         || checkBottomRow(player, board)
@@ -142,7 +133,6 @@ export const checkForWin = (player, square, board) => {
         || checkRightToLeftDiagonal(player, board));
     }
   } else if (square === 7) {
-    console.log('in square 7');
     if (allSquaresFull) {
       if (checkSecondColumn(player, board) 
         || checkBottomRow(player, board)) {
@@ -155,7 +145,6 @@ export const checkForWin = (player, square, board) => {
         || checkBottomRow(player, board)); 
     }
   } else if (square === 8) {
-    console.log('in square 8');
     if (allSquaresFull) {
       if (checkLeftToRightDiagonal(player, board)
         || checkThirdColumn(player, board)
@@ -175,7 +164,7 @@ export const checkForWin = (player, square, board) => {
 };
 
 export const twoInARow = function(player, board) {
-  for (var i = 0; i < 7; i += 3) {
+  for (let i = 0; i < 7; i += 3) {
     // horizontal
     if (board[i] === player) {
       if (board[i + 1] === player) {
@@ -195,7 +184,7 @@ export const twoInARow = function(player, board) {
       } 
     }
   }
-  for (var j = 0; j < 3; j++) {
+  for (let j = 0; j < 3; j++) {
     // vertical
     if (board[j] === player) {
       if (board[j + 3] === player) {
