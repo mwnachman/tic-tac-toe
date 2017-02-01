@@ -11,3 +11,10 @@ export const selectO = () => {
     payload: "O"
   };
 };
+
+export const youWonAction = () => {
+  console.log('in you won action');
+  return {
+    type: 'WIN_GAME'
+  };
+};

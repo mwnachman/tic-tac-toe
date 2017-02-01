@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectSquareAction } from '../../actions/game';
+import { makeMoveAction } from '../../actions/game';
+// import { youWonAction } from '../../actions/player';
+// import { checkForWin } from '../../helpers/gameLogic';
 import './Board.css';
 
 const xImage = require('../../assets/X.png');
@@ -16,12 +18,21 @@ const mapStateToProps = (state) => {
 };
 
 const matchDispatchToProps = (dispatch) => {
-  return bindActionCreators({ selectSquare: selectSquareAction
+  return bindActionCreators({ makeMove: makeMoveAction,
+                              // checkWin: checkForWin,
+                              // youWonAction: youWonAction,
+                              // computerMove: computerMoveAction
                              }, dispatch);
 };
  
 
 class Board extends Component {
+
+  // makeMove(square, player, board, playersTurn) {
+  //   if (playersTurn && board[square] === null) {  
+  //     this.props.selectSquare(square, player, board);
+  //   }
+  // }
 
   render () {
     return (
@@ -29,7 +40,8 @@ class Board extends Component {
         {numbers.map(number =>
           (<span className={"square-" + number} key={number}
             onClick={() =>
-              this.props.selectSquare(number, this.props.player.xOrY, this.props.game, this.props.player.playersTurn) 
+              this.props.makeMove(number, this.props.player.xOrY, 
+                this.props.game, this.props.player.playersTurn)
             }>
             {this.props.game[number] === "X" &&
             <img src={xImage} />

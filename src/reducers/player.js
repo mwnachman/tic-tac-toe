@@ -23,6 +23,10 @@ const PlayerReducer = (state = {
     return Object.assign({}, state, {
       playersTurn: false
     })
+  } else if ( action.type === 'WIN_GAME' ) {
+    return Object.assign({}, state, {
+      playerWon: true
+    })
   } else if ( action.type === 'NEW_GAME' ) {
     return Object.assign({}, state, {
       xOrY: null,
