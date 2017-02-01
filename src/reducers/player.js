@@ -28,14 +28,9 @@ const PlayerReducer = (state = {
       playersTurn: true
     })
   } else if ( action.type === 'WIN_GAME' ) {
-    // console.log('in win game', action.payload.win);
     let otherPlayer = action.payload.player === 'X' ? 'O' : 'X';
-    // console.log('other Player', otherPlayer);
-    // console.log('action payload player', action.payload.player);
-    // console.log('state xOrY', state.xOrY);
     if ( action.payload.win === true ) {
       if ( action.payload.player !== state.xOrY ) {
-        // console.log('in win this player');
         let newScore = state.computerScore + 1;
         return Object.assign({}, state, {
           playersTurn: false,
@@ -43,7 +38,6 @@ const PlayerReducer = (state = {
           computerScore: newScore
         })
       } else if ( action.payload.player === state.xOrY ) {
-        // console.log('in win other player');
         let newScore = state.playerScore + 1;
         return Object.assign({}, state, {
           playersTurn: false,
@@ -57,7 +51,6 @@ const PlayerReducer = (state = {
         playerWon: 'draw'
       })
     } else if ( action.payload.win === false ) {
-      // console.log('in if else state for win');
       return state;
     }
   } else if ( action.type === 'NEW_GAME' ) {

@@ -175,7 +175,6 @@ export const checkForWin = (player, square, board) => {
 };
 
 export const twoInARow = function(player, board) {
-  // let humanPlayer = player === "X" ? "O" : "X";
   for (var i = 0; i < 7; i += 3) {
     // horizontal
     if (board[i] === player) {
@@ -248,11 +247,9 @@ export const twoInARow = function(player, board) {
   } else {
     return -1;
   }
-}
+};
 
 export const findMove = (player, board) => {
-  console.log('board', board);
-  console.log('in computer move');
   let humanPlayer = player === "X" ? "O" : "X";
   if (twoInARow(player, board) > 0 ||  twoInARow(humanPlayer, board) > 0) {
     return twoInARow(player, board) > -1 ? twoInARow(player, board) : twoInARow(humanPlayer, board);
