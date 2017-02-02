@@ -191,14 +191,14 @@ export const twoInARow = function(player, board) {
         if (board[j + 6] === null) {
           return j + 6;
         }
-      } else if (board[j + 6] === player) {
-        if (board[j + 3] === null) {
+      } else if (board[j + 3] === null) {
+        if (board[j + 6] === player) {
           return j + 3;
-        }
+        } 
       }
-    } else if (board[j + 3] === player) {
-      if (board[j + 6] === player) {
-        if (board[j] === null) {
+    } else if (board[j] === null) {
+      if (board[j + 3] === player) {
+        if (board[j + 6] === player) {
           return j;
         }
       }
@@ -240,8 +240,22 @@ export const twoInARow = function(player, board) {
 
 export const findMove = (player, board) => {
   let humanPlayer = player === "X" ? "O" : "X";
-  if (twoInARow(player, board) > 0 ||  twoInARow(humanPlayer, board) > 0) {
+  let counter = 0;
+  for (let i = 0; i < 9; i++) {
+    if (board[i] !== null) {
+      counter++;
+    }
+  }
+  if (twoInARow(player, board) > -1 || twoInARow(humanPlayer, board) > -1) {
     return twoInARow(player, board) > -1 ? twoInARow(player, board) : twoInARow(humanPlayer, board);
+  } else if (counter === 3 && player === "O" 
+             && ((board[0] === "X" && board[8] === "X") 
+                  || (board[2] === "X") && (board[6] === "X"))) {
+      if (board[0] === "X" && board[8] === "X") {
+        return 5;
+      } else if (board[2] === "X" && board[6] === "X") {
+        return 3;
+    }
   } else if (board[4] === null) {
     return 4;
   } else if (board[0] === humanPlayer && board[8] === null) {
