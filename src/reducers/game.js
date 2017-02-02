@@ -17,7 +17,7 @@ const GameReducer = (state =
       }
     }
     if (boardFull === true) {
-      return state;
+      return Object.assign({}, state);
     } else {
       let player = action.payload.player;
       let square = action.payload.move;
