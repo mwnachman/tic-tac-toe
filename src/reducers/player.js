@@ -57,7 +57,7 @@ const PlayerReducer = (state = {
       xOrY: null,
       optionVisible: true,
       playersTurn: false,
-      playerWon: null
+      playerWon: null,
     })
   } else {
     return state;

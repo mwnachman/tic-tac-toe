@@ -47,7 +47,7 @@ class Board extends Component {
     if (this.props.player.playersTurn === true && this.props.game[square] === null) {
       this.props.selectSquare(square, this.props.player.xOrY);
       this.checkWin(this.props.player.xOrY, square, boardCopy);
-      setTimeout((function() {this.computerMove(computerPlayer, findMove(computerPlayer, boardCopy))}).bind(this), 1000);
+      setTimeout((function() {this.computerMove(computerPlayer, findMove(computerPlayer, boardCopy))}).bind(this), 500);
     }
   };
 

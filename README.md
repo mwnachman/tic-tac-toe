@@ -1,1 +1,1 @@
-Tic-Tac-Toe game for Hipmunk.
+Try to beat the computer!  (And please, please, please, email me if you do!  This game *should* be unbeatable.)
