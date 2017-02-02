@@ -250,7 +250,7 @@ export const findMove = (player, board) => {
     return twoInARow(player, board) > -1 ? twoInARow(player, board) : twoInARow(humanPlayer, board);
   } else if (counter === 3 && player === "O" 
              && ((board[0] === "X" && board[8] === "X") 
-                  || (board[2] === "X" && board[6] === "X"))) {
+                  || (board[2] === "X") && (board[6] === "X"))) {
       if (board[0] === "X" && board[8] === "X") {
         return 5;
       } else if (board[2] === "X" && board[6] === "X") {

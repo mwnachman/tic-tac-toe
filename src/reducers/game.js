@@ -13,7 +13,15 @@ const GameReducer = (state =
     if (action.payload.move === undefined) {
       return state;
     }
-    else {
+    var boardFull = true;
+    for (let i = 0; i < 9; i++) {
+      if (state[i] === null) {
+        boardFull = false;
+      }
+    }
+    if (boardFull === true) {
+      return state;
+    } else {
       let player = action.payload.player;
       let square = action.payload.move;
       let stateBeforeSquare = state.slice(0, square);
