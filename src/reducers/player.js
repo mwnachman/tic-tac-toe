@@ -28,7 +28,6 @@ const PlayerReducer = (state = {
       playersTurn: true
     })
   } else if ( action.type === 'WIN_GAME' ) {
-    let otherPlayer = action.payload.player === 'X' ? 'O' : 'X';
     if ( action.payload.win === true ) {
       if ( action.payload.player !== state.xOrY ) {
         let newScore = state.computerScore + 1;

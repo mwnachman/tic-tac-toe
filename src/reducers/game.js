@@ -10,15 +10,10 @@ const GameReducer = (state =
     let stateAfterSquare = state.slice(square + 1); 
     return stateBeforeSquare.concat(player).concat(stateAfterSquare);
   } else if ( action.type === 'COMPUTER_MOVE' ) {
-    var boardFull = true;
-    for (let i = 0; i < 9; i++) {
-      if (state[i] === null) {
-        boardFull = false;
-      }
+    if (action.payload.move === undefined) {
+      return state;
     }
-    if (boardFull === true) {
-      return Object.assign({}, state);
-    } else {
+    else {
       let player = action.payload.player;
       let square = action.payload.move;
       let stateBeforeSquare = state.slice(0, square);
