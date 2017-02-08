@@ -1,33 +1,16 @@
-const checkTopRow = (player, board) => {
-  return (board[0] === player && board[1] === player && board[2] === player);
-};
+// The first two functions below will replace the 
+// commented out functions at the bottom:
 
-const checkMiddleRow = (player, board) => {
-  return (board[3] === player && board[4] === player && board[5] === player);
-};
-
-const checkBottomRow = (player, board) => {
-  return (board[6] === player && board[7] === player && board[8] === player);
-};
-
-const checkFirstColumn = (player, board) => {
-  return (board[0] === player && board[3] === player && board[6] === player);
-};
-
-const checkSecondColumn = (player, board) => {
-  return (board[1] === player && board[4] === player && board[7] === player);
-};
-
-const checkThirdColumn = (player, board) => {
-  return (board[2] === player && board[5] === player && board[8] === player);
-};
-
-const checkLeftToRightDiagonal = (player, board) => {
-  return (board[0] === player && board[4] === player && board[8] === player);
-};
-
-const checkRightToLeftDiagonal = (player, board) => {
-  return (board[2] === player && board[4] === player && board[6] === player);
+const checkThreeInRow = (player, board) => {
+  return ((board[0] === player && board[1] === player && board[2] === player)
+           || (board[3] === player && board[4] === player && board[5] === player)
+           || (board[6] === player && board[7] === player && board[8] === player)
+           || (board[0] === player && board[3] === player && board[6] === player)
+           || (board[1] === player && board[4] === player && board[7] === player)
+           || (board[2] === player && board[5] === player && board[8] === player)
+           || (board[0] === player && board[4] === player && board[8] === player)
+           || (board[2] === player && board[4] === player && board[6] === player)
+          );
 };
 
 export const checkForWin = (player, square, board) => {
@@ -38,130 +21,18 @@ export const checkForWin = (player, square, board) => {
       allSquaresFull = false;
     }
   }
-  if (square === 0) {
-    if (allSquaresFull) {
-      if (checkTopRow(player, board) 
-        || checkLeftToRightDiagonal(player, board) 
-        || checkFirstColumn(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
+  if (allSquaresFull) {
+    if (checkThreeInRow(player, board)) {
+      return true;
     } else {
-      return (checkTopRow(player, board) 
-        || checkLeftToRightDiagonal(player, board) 
-        || checkFirstColumn(player, board));
-    }
-  } else if (square === 1) {
-    if (allSquaresFull) {
-      if (checkTopRow(player, board) 
-        || checkSecondColumn(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkTopRow(player, board) 
-        || checkSecondColumn(player, board));
-    }
-  } else if (square === 2) {
-    if (allSquaresFull) {
-      if (checkTopRow(player, board) 
-        || checkThirdColumn(player, board)
-        || checkRightToLeftDiagonal(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkTopRow(player, board) 
-        || checkThirdColumn(player, board)
-        || checkRightToLeftDiagonal(player, board));
-    }
-  } else if (square === 3) {
-    if (allSquaresFull) {
-      if (checkFirstColumn(player, board) 
-        || checkMiddleRow(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkFirstColumn(player, board) 
-        || checkMiddleRow(player, board)); 
-    }
-  } else if (square === 4) {
-    if (allSquaresFull) {
-      if (checkLeftToRightDiagonal(player, board) 
-        || checkRightToLeftDiagonal(player, board)
-        || checkMiddleRow(player, board) 
-        || checkSecondColumn(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkLeftToRightDiagonal(player, board) 
-        || checkRightToLeftDiagonal(player, board)
-        || checkMiddleRow(player, board) 
-        || checkSecondColumn(player, board));
-    }
-  } else if (square === 5) {
-    if (allSquaresFull) {
-      if (checkThirdColumn(player, board) 
-        || checkMiddleRow(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkThirdColumn(player, board) 
-        || checkMiddleRow(player, board));
-    }
-  } else if (square === 6) {
-    if (allSquaresFull) {
-      if (checkFirstColumn(player, board)
-        || checkBottomRow(player, board)
-        || checkRightToLeftDiagonal(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkFirstColumn(player, board)
-        || checkBottomRow(player, board)
-        || checkRightToLeftDiagonal(player, board));
-    }
-  } else if (square === 7) {
-    if (allSquaresFull) {
-      if (checkSecondColumn(player, board) 
-        || checkBottomRow(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkSecondColumn(player, board) 
-        || checkBottomRow(player, board)); 
-    }
-  } else if (square === 8) {
-    if (allSquaresFull) {
-      if (checkLeftToRightDiagonal(player, board)
-        || checkThirdColumn(player, board)
-        || checkBottomRow(player, board)) {
-        return true;
-      } else {
-        return 'draw';
-      }
-    } else {
-      return (checkLeftToRightDiagonal(player, board)
-        || checkThirdColumn(player, board)
-        || checkBottomRow(player, board));
+      return 'draw';
     }
   } else {
-    return 'draw';
+    return checkThreeInRow(player, board);
   }
 };
+
+
 
 export const twoInARow = function(player, board) {
   for (let i = 0; i < 7; i += 3) {
@@ -286,7 +157,170 @@ export const findMove = (player, board) => {
 };
 
 
+// const checkTopRow = (player, board) => {
+//   return (board[0] === player && board[1] === player && board[2] === player);
+// };
 
+// const checkMiddleRow = (player, board) => {
+//   return (board[3] === player && board[4] === player && board[5] === player);
+// };
+
+// const checkBottomRow = (player, board) => {
+//   return (board[6] === player && board[7] === player && board[8] === player);
+// };
+
+// const checkFirstColumn = (player, board) => {
+//   return (board[0] === player && board[3] === player && board[6] === player);
+// };
+
+// const checkSecondColumn = (player, board) => {
+//   return (board[1] === player && board[4] === player && board[7] === player);
+// };
+
+// const checkThirdColumn = (player, board) => {
+//   return (board[2] === player && board[5] === player && board[8] === player);
+// };
+
+// const checkLeftToRightDiagonal = (player, board) => {
+//   return (board[0] === player && board[4] === player && board[8] === player);
+// };
+
+// const checkRightToLeftDiagonal = (player, board) => {
+//   return (board[2] === player && board[4] === player && board[6] === player);
+// };
+
+// export const checkForWin = (player, square, board) => {
+//   board[square] = player;
+//   let allSquaresFull = true;
+//   for (let i = 0; i < 9; i++) {
+//     if (board[i] === null) {
+//       allSquaresFull = false;
+//     }
+//   }
+//   if (square === 0) {
+//     if (allSquaresFull) {
+//       if (checkTopRow(player, board) 
+//         || checkLeftToRightDiagonal(player, board) 
+//         || checkFirstColumn(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkTopRow(player, board) 
+//         || checkLeftToRightDiagonal(player, board) 
+//         || checkFirstColumn(player, board));
+//     }
+//   } else if (square === 1) {
+//     if (allSquaresFull) {
+//       if (checkTopRow(player, board) 
+//         || checkSecondColumn(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkTopRow(player, board) 
+//         || checkSecondColumn(player, board));
+//     }
+//   } else if (square === 2) {
+//     if (allSquaresFull) {
+//       if (checkTopRow(player, board) 
+//         || checkThirdColumn(player, board)
+//         || checkRightToLeftDiagonal(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkTopRow(player, board) 
+//         || checkThirdColumn(player, board)
+//         || checkRightToLeftDiagonal(player, board));
+//     }
+//   } else if (square === 3) {
+//     if (allSquaresFull) {
+//       if (checkFirstColumn(player, board) 
+//         || checkMiddleRow(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkFirstColumn(player, board) 
+//         || checkMiddleRow(player, board)); 
+//     }
+//   } else if (square === 4) {
+//     if (allSquaresFull) {
+//       if (checkLeftToRightDiagonal(player, board) 
+//         || checkRightToLeftDiagonal(player, board)
+//         || checkMiddleRow(player, board) 
+//         || checkSecondColumn(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkLeftToRightDiagonal(player, board) 
+//         || checkRightToLeftDiagonal(player, board)
+//         || checkMiddleRow(player, board) 
+//         || checkSecondColumn(player, board));
+//     }
+//   } else if (square === 5) {
+//     if (allSquaresFull) {
+//       if (checkThirdColumn(player, board) 
+//         || checkMiddleRow(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkThirdColumn(player, board) 
+//         || checkMiddleRow(player, board));
+//     }
+//   } else if (square === 6) {
+//     if (allSquaresFull) {
+//       if (checkFirstColumn(player, board)
+//         || checkBottomRow(player, board)
+//         || checkRightToLeftDiagonal(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkFirstColumn(player, board)
+//         || checkBottomRow(player, board)
+//         || checkRightToLeftDiagonal(player, board));
+//     }
+//   } else if (square === 7) {
+//     if (allSquaresFull) {
+//       if (checkSecondColumn(player, board) 
+//         || checkBottomRow(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkSecondColumn(player, board) 
+//         || checkBottomRow(player, board)); 
+//     }
+//   } else if (square === 8) {
+//     if (allSquaresFull) {
+//       if (checkLeftToRightDiagonal(player, board)
+//         || checkThirdColumn(player, board)
+//         || checkBottomRow(player, board)) {
+//         return true;
+//       } else {
+//         return 'draw';
+//       }
+//     } else {
+//       return (checkLeftToRightDiagonal(player, board)
+//         || checkThirdColumn(player, board)
+//         || checkBottomRow(player, board));
+//     }
+//   } else {
+//     return 'draw';
+//   }
+// };
 
 
 

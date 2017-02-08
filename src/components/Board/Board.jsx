@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({ 
-    checkWin: checkForWin,
+                              checkWin: checkForWin,
                               youWonAction: youWonAction,
                               computerMove: computerMoveAction,
                               selectSquare: selectSquareAction
